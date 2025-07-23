@@ -1,48 +1,7 @@
 {
     "data_pipeline": {
-        "cvat_annotations_path": "Cvat_dataset/annotations.xml",
-        "images_dir": "Cvat_dataset/images/Train",
-        "batch_size": 32,
         "image_size": [512, 512],
-        "validation_split": 0.2,
-        "num_workers": 4,
-        "prefetch_factor": 2,
-        "pin_memory": true
-    },
-    "training": {
-        "learning_rate": 0.001,
-        "epochs": 100,
-        "early_stopping_patience": 15,
-        "mixed_precision": true,
-        "gradient_clip": 1.0,
-        "empty_cache_freq": 10,
-        "scheduler": {
-            "type": "cosine",
-            "warmup_epochs": 5,
-            "min_lr": 1e-6
-        }
-    },
-    "augmentation": {
-        "enabled": true,
-        "horizontal_flip": false,
-        "vertical_flip": false,
-        "rotation_range": 5,
-        "brightness_range": [0.9, 1.1],
-        "contrast_range": [0.9, 1.1],
-        "scale_range": [0.95, 1.05],
-        "random_crop": false,
-        "gaussian_noise": 0.2,
-        "gaussian_blur": 0.1,
-        "motion_blur": {
-            "enabled": true,
-            "kernel_size": [3, 5],
-            "probability": 0.3
-        },
-        "perspective": {
-            "enabled": true,
-            "scale": 0.05,
-            "probability": 0.3
-        }
+        "batch_size": 32
     },
     "model": {
         "backbone": "resnet34",
@@ -54,11 +13,5 @@
             "encoder": [64, 128, 256, 512],
             "decoder": [512, 256, 128, 64]
         }
-    },
-    "debug": {
-        "save_validation_predictions": true,
-        "log_frequency": 100,
-        "tensorboard": true,
-        "save_memory_stats": true
     }
 }
